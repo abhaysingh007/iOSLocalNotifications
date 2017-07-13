@@ -100,7 +100,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         let stepsString = String(format: "%i", step)
         let identifier = "pizza.step." + stepsString
         let resource = "MakePizza_" + stepsString
-        let type = "jpg"
+        let type = "png"
         return notificationAttachment(for: identifier, resource: resource, type: type)
     }
     
@@ -134,8 +134,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         content.body = "Making Pizza"
         content.userInfo = ["Step": 0]
         content.categoryIdentifier = "pizza.steps.category"
-//        content.attachments = pizzaStepImage(step: 0)
-        content.attachments = pizzaGif()
+        content.attachments = pizzaStepImage(step: 0)
+//        content.attachments = pizzaGif()
         return content
     }
     
@@ -159,7 +159,7 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         if isGrantedNotificationAccess{
             pizzaNumber += 1
             let content = makePizzaContent()
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 7.0, repeats: false)
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: false)
 //            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: true)
             content.subtitle = "Pizza \(pizzaNumber)"
             addNotification(trigger: trigger, content: content, identifier: "message.pizza.\(pizzaNumber)")
